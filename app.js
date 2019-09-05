@@ -12,6 +12,7 @@ require('dotenv').config()
 
 
 ///conect to Db
+//db env
 mongoose.connect(process.env.DB_HOST, {useNewUrlParser: true});
 
 
