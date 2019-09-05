@@ -32,6 +32,15 @@ run this code to create the first admin in you database
 
 ```
 
+## run app
+
+run app.js or run npm start
+
+```bash
+  node app.js
+  npm start
+```
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
