@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>admin</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <link href="/css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Blog Dashboard </div>
+      <div class="list-group list-group-flush">
+        <a href="adminHome" class="list-group-item list-group-item-action bg-light">Posts</a>
+        <a href="../post" class="list-group-item list-group-item-action bg-light">New Post</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Menu</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <p>LeoOmori</p>
+              <a href="../">home</a>
+              <a href="/logout">logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <h1 class="mt-4">Posts</h1>
+        <div class="posts">
+
+            <% posts.forEach(function(post){ %>
+              <div class="postField">
+                <h2><%= post.title %></h2>
+                <p><%= post.subTitle %></p>
+                <div class="inlineForm">
+                  <a  href="../post/<%= post.id %>" class="btn btn-primary">Editar</a>
+                  <form action="../post/<%= post.id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger" >Deletar</button>
+                  </form>
+                </div>
+              </div>              
+
+            <% }); %>
+            
+        </div>
+
+        <% if (pages > 0) { %>
+          <div class="Page navigation justify-content-center example mb-5 mt-5">
+              <ul class="pagination">
+                  <% if (current == 1) { %>
+                      <li class="page-item disabled"><a class="page-link">First</a></li>
+                  <% } else { %>
+                      <li class="page-item"><a class="page-link" href="/adminHome/1">First</a></li>
+                  <% } %>
+                  <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                  <% if (i !== 1) { %>
+                      <li class="page-item disabled"><a class="page-link">...</a></li>
+                  <% } %>
+                  <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                      <% if (i == current) { %>
+                          <li class="page-item active"><a class="page-link"><%= i %></a></li>
+                      <% } else { %>
+                          <li class="page-item"><a class="page-link" href="/adminHome/<%= i %>"><%= i %></a></li>
+                      <% } %>
+                      <% if (i == Number(current) + 4 && i < pages) { %>
+                          <li class="disabled page-item"><a class="page-link">...</a></li>
+                      <% } %>
+                  <% } %>
+                  <% if (current == pages) { %>
+                      <li class="disabled page-item"><a class="page-link">Last</a></li>
+                  <% } else { %>
+                      <li class="page-item"><a class="page-link" href="/adminHome/<%= pages %>">Last</a></li>
+                  <% } %>
+              </ul>
+          </div>
+      <% } %>
+
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+
+</body>
+
+</html>

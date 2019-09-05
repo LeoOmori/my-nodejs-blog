@@ -1,0 +1,18 @@
+WHAT to do....
+
+
+[x] - criar uma pagina 404
+[x] - arrumar os debug no console
+[x] - arrumar os botões no painel de admin
+[x] - arrumar as tags no painel de admin
+[x] - arrumar a função para criar o primeiro admin
+[x] - criar paginação para os posts.
+[ ] - arrumar o SEO, sei la como faz isso 
+[ ] - .ENV
+[ ] - refatorar as rotas para controllers
+[ ] - criar um banco usando um servico em nuvem
+[ ] - estudar como fazer o deploy
+
+------------------------
+
+[] - criar o primeiro post do blog.
